@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Smart Emergency Response Dashboard for monitoring and managing emergency incidents."
+    >
+
+    <title>Smart Emergency Response Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="header-container">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🚨
+                </div>
+
+                <div>
+                    <h1>Smart Response</h1>
+                    <p>Emergency Command Dashboard</p>
+                </div>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span class="status-indicator"></span>
+
+                <div>
+                    <strong>System Operational</strong>
+                    <small>Live Monitoring</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             WELCOME SECTION
+        ========================== -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <span class="eyebrow">
+                    EMERGENCY OPERATIONS CENTER
+                </span>
+
+                <h2>
+                    Smart Emergency
+                    <span>Response Dashboard</span>
+                </h2>
+
+                <p>
+                    Monitor incidents, manage emergency reports,
+                    and coordinate response teams from one place.
+                </p>
+
+            </div>
+
+            <div class="live-time">
+
+                <span>Dashboard Status</span>
+
+                <strong id="currentTime">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📋
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Total Incidents</span>
+
+                    <strong id="incidentCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Currently registered
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    🚨
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Critical Incidents</span>
+
+                    <strong id="criticalCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Require immediate attention
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    👥
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Response Teams</span>
+
+                    <strong id="teamCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Teams available
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ✓
+                </div>
+
+                <div class="stat-info">
+
+                    <span>Resolved</span>
+
+                    <strong id="resolvedCount">
+                        0
+                    </strong>
+
+                    <small>
+                        Successfully handled
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INCIDENT SECTION
+        ========================== -->
+
+        <section class="content-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        INCIDENT MANAGEMENT
+                    </span>
+
+                    <h2>Active Incidents</h2>
+
+                    <p>
+                        Monitor and manage emergency incidents.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="openIncidentForm"
+                    class="primary-button"
+                >
+                    <span>＋</span>
+                    Report Incident
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 SEARCH & FILTERS
+            ========================== -->
+
+            <div class="control-panel">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search incidents or locations..."
+                    >
+
+                    <button
+                        id="clearSearch"
+                        class="clear-search"
+                        title="Clear search"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <select id="filterSeverity">
+
+                    <option value="all">
+                        All Severities
+                    </option>
+
+                    <option value="critical">
+                        Critical
+                    </option>
+
+                    <option value="high">
+                        High
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <select id="filterStatus">
+
+                    <option value="all">
+                        All Statuses
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Resolved">
+                        Resolved
+                    </option>
+
+                </select>
+
+
+                <select id="sortSeverity">
+
+                    <option value="default">
+                        Sort by Severity
+                    </option>
+
+                    <option value="critical-high">
+                        Critical → Low
+                    </option>
+
+                    <option value="low-critical">
+                        Low → Critical
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =========================
+                 RESULT COUNT
+            ========================== -->
+
+            <div class="result-info">
+
+                <span id="resultCount">
+                    Showing 0 incidents
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 INCIDENT CARDS
+            ========================== -->
+
+            <div
+                id="incidentList"
+                class="incident-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             RESPONSE TEAMS
+        ========================== -->
+
+        <section class="content-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        RESOURCE MANAGEMENT
+                    </span>
+
+                    <h2>Response Teams</h2>
+
+                    <p>
+                        Current emergency response team readiness.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="team-grid">
+
+
+                <!-- FIRE TEAM -->
+
+                <div class="team-card">
+
+                    <div class="team-header">
+
+                        <div class="team-icon fire">
+                            🔥
+                        </div>
+
+                        <span class="team-status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Fire & Rescue
+                    </h3>
+
+                    <p>
+                        Emergency fire and rescue operations.
+                    </p>
+
+                    <div class="team-progress">
+
+                        <div class="progress-header">
+
+                            <span>
+                                Deployment Readiness
+                            </span>
+
+                            <strong>
+                                85%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                style="width: 85%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MEDICAL TEAM -->
+
+                <div class="team-card">
+
+                    <div class="team-header">
+
+                        <div class="team-icon medical">
+                            🏥
+                        </div>
+
+                        <span class="team-status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Medical Response
+                    </h3>
+
+                    <p>
+                        Emergency medical assistance and support.
+                    </p>
+
+                    <div class="team-progress">
+
+                        <div class="progress-header">
+
+                            <span>
+                                Deployment Readiness
+                            </span>
+
+                            <strong>
+                                70%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                style="width: 70%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- POLICE TEAM -->
+
+                <div class="team-card">
+
+                    <div class="team-header">
+
+                        <div class="team-icon police">
+                            🛡️
+                        </div>
+
+                        <span class="team-status available">
+                            Available
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Police & Security
+                    </h3>
+
+                    <p>
+                        Security, traffic and emergency coordination.
+                    </p>
+
+                    <div class="team-progress">
+
+                        <div class="progress-header">
+
+                            <span>
+                                Deployment Readiness
+                            </span>
+
+                            <strong>
+                                90%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                style="width: 90%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         INCIDENT MODAL
+    ========================== -->
+
+    <div
+        id="incidentModal"
+        class="modal-overlay"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="section-label">
+                        NEW REPORT
+                    </span>
+
+                    <h2>Report Emergency</h2>
+
+                </div>
+
+                <button
+                    id="closeIncidentForm"
+                    class="close-button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="incidentForm">
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="incidentTitle">
+                        Incident Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="incidentTitle"
+                        placeholder="e.g. Road Accident"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="incidentLocation">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="incidentLocation"
+                        placeholder="e.g. Main Highway"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SEVERITY -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="incidentSeverity">
+                            Severity
+                        </label>
+
+                        <select id="incidentSeverity">
+
+                            <option value="critical">
+                                Critical
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+
+                            <option value="medium">
+                                Medium
+                            </option>
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="incidentStatus">
+                            Status
+                        </label>
+
+                        <select id="incidentStatus">
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Resolved">
+                                Resolved
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelIncident"
+                        class="secondary-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Report Incident
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        <span id="toastIcon">✓</span>
+
+        <span id="toastMessage">
+            Incident added successfully.
+        </span>
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <strong>
+                    Smart Emergency Response
+                </strong>
+
+                <span>
+                    Emergency Operations Dashboard
+                </span>
+            </div>
+
+            <span>
+                © 2026
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

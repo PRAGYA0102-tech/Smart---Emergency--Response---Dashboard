@@ -24,10 +24,19 @@ A web-based dashboard for managing and monitoring reported accidents and emergen
 
 ## Project Structure
 
-```text
 Smart-Emergency-Response-Dashboard/
-│
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
+
+## How to Run
+
+1. Clone or download the repository.
+2. Open the project folder in Visual Studio Code.
+3. Open `index.html` using Live Server.
+4. Use the dashboard to report and manage accidents.
+
+## Purpose
+
+The project provides a simple interface for recording accident information and monitoring emergency response activities from a centralized dashboard.

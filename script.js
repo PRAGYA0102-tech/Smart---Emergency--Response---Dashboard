@@ -7,7 +7,9 @@
    Accident DATA
 ===================================================== */
 
-let Accident = [
+let Accident = JSON.parse(
+    localStorage.getItem("accidents")
+) || [
 
     {
         id: 1,
@@ -42,6 +44,20 @@ let Accident = [
     }
 
 ];
+
+
+/* =====================================================
+   SAVE Accident DATA
+===================================================== */
+
+function saveAccidents() {
+
+    localStorage.setItem(
+        "accidents",
+        JSON.stringify(Accident)
+    );
+
+}
 
 
 /* =====================================================
@@ -538,6 +554,11 @@ accidentForm.addEventListener(
         Accident.push(newAccident);
 
 
+        /* Save to localStorage */
+
+        saveAccidents();
+
+
         /* Update dashboard */
 
         updateAccidentDisplay();
@@ -572,7 +593,7 @@ accidentForm.addEventListener(
 
 function editAccident(id) {
 
-    const Accident =
+    const accident =
         Accident.find(function (item) {
 
             return item.id === id;
@@ -580,7 +601,7 @@ function editAccident(id) {
         });
 
 
-    if (!Accident) {
+    if (!accident) {
         return;
     }
 
@@ -588,7 +609,7 @@ function editAccident(id) {
     const newTitle =
         prompt(
             "Enter Accident title:",
-            Accident.title
+            accident.title
         );
 
 
@@ -603,7 +624,7 @@ function editAccident(id) {
     const newLocation =
         prompt(
             "Enter Accident location:",
-            Accident.location
+            accident.location
         );
 
 
@@ -618,7 +639,7 @@ function editAccident(id) {
     const newSeverity =
         prompt(
             "Enter severity: critical, high, medium or low",
-            Accident.severity
+            accident.severity
         );
 
 
@@ -657,7 +678,7 @@ function editAccident(id) {
     const newStatus =
         prompt(
             "Enter status: Active or Resolved",
-            Accident.status
+            accident.status
         );
 
 
@@ -676,17 +697,22 @@ function editAccident(id) {
 
     /* Update object */
 
-    Accident.title =
+    accident.title =
         newTitle.trim();
 
-    Accident.location =
+    accident.location =
         newLocation.trim();
 
-    Accident.severity =
+    accident.severity =
         severity;
 
-    Accident.status =
+    accident.status =
         status;
+
+
+    /* Save changes */
+
+    saveAccidents();
 
 
     /* Refresh UI */
@@ -723,13 +749,13 @@ function deleteAccident(id) {
     }
 
 
-    const Accident =
+    const accident =
         Accident[index];
 
 
     const confirmed =
         confirm(
-            `Delete "${Accident.title}"?`
+            `Delete "${accident.title}"?`
         );
 
 
@@ -742,6 +768,11 @@ function deleteAccident(id) {
         index,
         1
     );
+
+
+    /* Save changes */
+
+    saveAccidents();
 
 
     updateAccidentDisplay();
@@ -982,6 +1013,7 @@ setInterval(
     updateClock,
     1000
 );
+
 
 updateClock();
 

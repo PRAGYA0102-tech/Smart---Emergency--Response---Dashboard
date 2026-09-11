@@ -7,7 +7,7 @@
 
     <meta
         name="description"
-        content="Smart Emergency Response Dashboard for monitoring and managing emergency incidents."
+        content="Smart Emergency Response Dashboard for monitoring and managing emergency Accident."
     >
 
     <title>Smart Emergency Response Dashboard</title>
@@ -80,7 +80,7 @@
                 </h2>
 
                 <p>
-                    Monitor incidents, manage emergency reports,
+                    Monitor Accident, manage emergency reports,
                     and coordinate response teams from one place.
                 </p>
 
@@ -114,9 +114,9 @@
 
                 <div class="stat-info">
 
-                    <span>Total Incidents</span>
+                    <span>Total Accident</span>
 
-                    <strong id="incidentCount">
+                    <strong id="accidentCount">
                         0
                     </strong>
 
@@ -137,7 +137,7 @@
 
                 <div class="stat-info">
 
-                    <span>Critical Incidents</span>
+                    <span>Critical Accident</span>
 
                     <strong id="criticalCount">
                         0
@@ -201,7 +201,7 @@
 
 
         <!-- =========================
-             INCIDENT SECTION
+             Accident SECTION
         ========================== -->
 
         <section class="content-section">
@@ -211,24 +211,24 @@
                 <div>
 
                     <span class="section-label">
-                        INCIDENT MANAGEMENT
+                        Accident MANAGEMENT
                     </span>
 
-                    <h2>Active Incidents</h2>
+                    <h2>Active Accidents</h2>
 
                     <p>
-                        Monitor and manage emergency incidents.
+                        Monitor and manage emergency Accident.
                     </p>
 
                 </div>
 
 
                 <button
-                    id="openIncidentForm"
+                    id="openAccidentForm"
                     class="primary-button"
                 >
                     <span>＋</span>
-                    Report Incident
+                    Report Accident
                 </button>
 
             </div>
@@ -249,7 +249,7 @@
                     <input
                         type="text"
                         id="searchInput"
-                        placeholder="Search incidents or locations..."
+                        placeholder="Search Accident or locations..."
                     >
 
                     <button
@@ -331,19 +331,19 @@
             <div class="result-info">
 
                 <span id="resultCount">
-                    Showing 0 incidents
+                    Showing 0 Accident
                 </span>
 
             </div>
 
 
             <!-- =========================
-                 INCIDENT CARDS
+                 Accident CARDS
             ========================== -->
 
             <div
-                id="incidentList"
-                class="incident-list"
+                id="accidentList"
+                class="Accident-list"
             ></div>
 
         </section>
@@ -540,11 +540,11 @@
 
 
     <!-- =========================
-         INCIDENT MODAL
+         Accident MODAL
     ========================== -->
 
     <div
-        id="incidentModal"
+        id="accidentModal"
         class="modal-overlay"
     >
 
@@ -563,28 +563,28 @@
                 </div>
 
                 <button
-                    id="closeIncidentForm"
+                    id="closeAccidentForm"
                     class="close-button"
                 >
-                    ×
+                    
                 </button>
 
             </div>
 
 
-            <form id="incidentForm">
+            <form id="accidentForm">
 
                 <!-- TITLE -->
 
                 <div class="form-group">
 
-                    <label for="incidentTitle">
-                        Incident Title
+                    <label for="accidentTitle">
+                        Accident Title
                     </label>
 
                     <input
                         type="text"
-                        id="incidentTitle"
+                        id="accidentTitle"
                         placeholder="e.g. Road Accident"
                         required
                     >
@@ -596,13 +596,13 @@
 
                 <div class="form-group">
 
-                    <label for="incidentLocation">
+                    <label for="accidentLocation">
                         Location
                     </label>
 
                     <input
                         type="text"
-                        id="incidentLocation"
+                        id="accidentLocation"
                         placeholder="e.g. Main Highway"
                         required
                     >
@@ -616,11 +616,11 @@
 
                     <div class="form-group">
 
-                        <label for="incidentSeverity">
+                        <label for="accidentSeverity">
                             Severity
                         </label>
 
-                        <select id="incidentSeverity">
+                        <select id="accidentSeverity">
 
                             <option value="critical">
                                 Critical
@@ -647,11 +647,11 @@
 
                     <div class="form-group">
 
-                        <label for="incidentStatus">
+                        <label for="accidentStatus">
                             Status
                         </label>
 
-                        <select id="incidentStatus">
+                        <select id="accidentStatus">
 
                             <option value="Active">
                                 Active
@@ -674,7 +674,7 @@
 
                     <button
                         type="button"
-                        id="cancelIncident"
+                        id="cancelAccident"
                         class="secondary-button"
                     >
                         Cancel
@@ -684,7 +684,7 @@
                         type="submit"
                         class="primary-button"
                     >
-                        Report Incident
+                        Report Accident
                     </button>
 
                 </div>
@@ -707,7 +707,7 @@
         <span id="toastIcon">✓</span>
 
         <span id="toastMessage">
-            Incident added successfully.
+            Accident added successfully.
         </span>
     </div>
 

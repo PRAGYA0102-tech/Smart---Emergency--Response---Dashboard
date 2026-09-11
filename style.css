@@ -624,10 +624,10 @@ body {
 
 
 /* =====================================================
-   INCIDENT LIST
+   Accident LIST
 ===================================================== */
 
-.incident-list {
+.Accident-list {
     display: grid;
 
     grid-template-columns:
@@ -638,10 +638,10 @@ body {
 
 
 /* =====================================================
-   INCIDENT CARD
+   Accident CARD
 ===================================================== */
 
-.incident-card {
+.Accident-card {
     position: relative;
 
     background: white;
@@ -660,14 +660,14 @@ body {
         box-shadow 0.25s ease;
 }
 
-.incident-card:hover {
+.Accident-card:hover {
     transform: translateY(-4px);
 
     box-shadow:
         0 15px 35px rgba(15, 23, 42, 0.12);
 }
 
-.incident-card-top {
+.Accident-card-top {
     display: flex;
 
     justify-content: space-between;
@@ -679,13 +679,13 @@ body {
     margin-bottom: 15px;
 }
 
-.incident-card h3 {
+.Accident-card h3 {
     font-size: 19px;
 
     margin-bottom: 3px;
 }
 
-.incident-id {
+.Accident-id {
     color: #94a3b8;
 
     font-size: 11px;
@@ -729,7 +729,7 @@ body {
     background: #dcfce7;
 }
 
-.incident-details {
+.Accident-details {
     display: grid;
 
     grid-template-columns:
@@ -772,7 +772,7 @@ body {
     color: var(--success);
 }
 
-.incident-actions {
+.Accident-actions {
     display: flex;
 
     gap: 8px;
@@ -780,7 +780,7 @@ body {
     margin-top: 15px;
 }
 
-.incident-actions button {
+.Accident-actions button {
     flex: 1;
 
     padding: 9px;
@@ -1104,7 +1104,7 @@ body {
     background: #e2e8f0;
 }
 
-#incidentForm {
+#accidentForm {
     padding: 25px;
 }
 
@@ -1298,7 +1298,7 @@ footer {
         grid-column: 1 / -1;
     }
 
-    .incident-list {
+    .Accident-list {
         grid-template-columns: 1fr;
     }
 
@@ -1381,11 +1381,11 @@ footer {
         padding: 18px;
     }
 
-    .incident-card {
+    .Accident-card {
         padding: 18px;
     }
 
-    .incident-details {
+    .Accident-details {
         grid-template-columns: 1fr;
     }
 
@@ -1394,7 +1394,7 @@ footer {
     }
 
     .modal-header,
-    #incidentForm {
+    #accidentForm {
         padding: 20px;
     }
 

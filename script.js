@@ -4,10 +4,10 @@
 
 
 /* =====================================================
-   INCIDENT DATA
+   Accident DATA
 ===================================================== */
 
-let incidents = [
+let Accident = [
 
     {
         id: 1,
@@ -48,11 +48,11 @@ let incidents = [
    GET HTML ELEMENTS
 ===================================================== */
 
-const incidentList =
-    document.getElementById("incidentList");
+const accidentList =
+    document.getElementById("accidentList");
 
-const incidentCount =
-    document.getElementById("incidentCount");
+const accidentCount =
+    document.getElementById("accidentCount");
 
 const criticalCount =
     document.getElementById("criticalCount");
@@ -78,20 +78,20 @@ const sortSeverity =
 const resultCount =
     document.getElementById("resultCount");
 
-const incidentModal =
-    document.getElementById("incidentModal");
+const accidentModal =
+    document.getElementById("accidentModal");
 
-const openIncidentForm =
-    document.getElementById("openIncidentForm");
+const openAccidentForm =
+    document.getElementById("openAccidentForm");
 
-const closeIncidentForm =
-    document.getElementById("closeIncidentForm");
+const closeAccidentForm =
+    document.getElementById("closeAccidentForm");
 
-const cancelIncident =
-    document.getElementById("cancelIncident");
+const cancelAccident =
+    document.getElementById("cancelAccident");
 
-const incidentForm =
-    document.getElementById("incidentForm");
+const accidentForm =
+    document.getElementById("accidentForm");
 
 const clearSearch =
     document.getElementById("clearSearch");
@@ -107,12 +107,12 @@ const toastMessage =
 
 
 /* =====================================================
-   DISPLAY INCIDENTS
+   DISPLAY Accident
 ===================================================== */
 
-function displayIncidents(incidentArray) {
+function displayAccidents(accidentArray) {
 
-    incidentList.innerHTML = "";
+    accidentList.innerHTML = "";
 
 
     /* ---------------------------------------------
@@ -120,14 +120,14 @@ function displayIncidents(incidentArray) {
     --------------------------------------------- */
 
     resultCount.textContent =
-        `Showing ${incidentArray.length} incident${incidentArray.length === 1 ? "" : "s"}`;
+        `Showing ${accidentArray.length} Accident${accidentArray.length === 1 ? "" : "s"}`;
 
 
     /* ---------------------------------------------
        EMPTY STATE
     --------------------------------------------- */
 
-    if (incidentArray.length === 0) {
+    if (accidentArray.length === 0) {
 
         const emptyState =
             document.createElement("div");
@@ -142,7 +142,7 @@ function displayIncidents(incidentArray) {
             </div>
 
             <h3>
-                No incidents found
+                No Accident found
             </h3>
 
             <p>
@@ -151,47 +151,47 @@ function displayIncidents(incidentArray) {
 
         `;
 
-        incidentList.appendChild(emptyState);
+        accidentList.appendChild(emptyState);
 
         return;
     }
 
 
     /* ---------------------------------------------
-       CREATE INCIDENT CARDS
+       CREATE Accident CARDS
     --------------------------------------------- */
 
-    incidentArray.forEach(function (incident) {
+    accidentArray.forEach(function (Accident) {
 
-        const incidentCard =
+        const accidentCard =
             document.createElement("article");
 
-        incidentCard.className =
-            "incident-card";
+        accidentCard.className =
+            "Accident-card";
 
 
         const severityClass =
-            `severity-${incident.severity}`;
+            `severity-${Accident.severity}`;
 
 
         const statusClass =
-            incident.status === "Active"
+            Accident.status === "Active"
                 ? "status-active"
                 : "status-resolved";
 
 
-        incidentCard.innerHTML = `
+        accidentCard.innerHTML = `
 
-            <div class="incident-card-top">
+            <div class="Accident-card-top">
 
                 <div>
 
                     <h3>
-                        ${escapeHTML(incident.title)}
+                        ${escapeHTML(Accident.title)}
                     </h3>
 
-                    <span class="incident-id">
-                        Incident #${incident.id}
+                    <span class="Accident-id">
+                        Accident #${Accident.id}
                     </span>
 
                 </div>
@@ -199,13 +199,13 @@ function displayIncidents(incidentArray) {
                 <span
                     class="severity-badge ${severityClass}"
                 >
-                    ${incident.severity}
+                    ${Accident.severity}
                 </span>
 
             </div>
 
 
-            <div class="incident-details">
+            <div class="Accident-details">
 
                 <div class="detail-item">
 
@@ -214,7 +214,7 @@ function displayIncidents(incidentArray) {
                     </span>
 
                     <strong>
-                        📍 ${escapeHTML(incident.location)}
+                        📍 ${escapeHTML(Accident.location)}
                     </strong>
 
                 </div>
@@ -227,7 +227,7 @@ function displayIncidents(incidentArray) {
                     </span>
 
                     <strong class="${statusClass}">
-                        ${incident.status}
+                        ${Accident.status}
                     </strong>
 
                 </div>
@@ -235,18 +235,18 @@ function displayIncidents(incidentArray) {
             </div>
 
 
-            <div class="incident-actions">
+            <div class="Accident-actions">
 
                 <button
                     class="edit-button"
-                    onclick="editIncident(${incident.id})"
+                    onclick="editAccident(${Accident.id})"
                 >
                     ✏️ Edit
                 </button>
 
                 <button
                     class="delete-button"
-                    onclick="deleteIncident(${incident.id})"
+                    onclick="deleteAccident(${Accident.id})"
                 >
                     🗑️ Delete
                 </button>
@@ -256,7 +256,7 @@ function displayIncidents(incidentArray) {
         `;
 
 
-        incidentList.appendChild(incidentCard);
+        accidentList.appendChild(accidentCard);
 
     });
 
@@ -264,10 +264,10 @@ function displayIncidents(incidentArray) {
 
 
 /* =====================================================
-   UPDATE INCIDENT DISPLAY
+   UPDATE Accident DISPLAY
 ===================================================== */
 
-function updateIncidentDisplay() {
+function updateAccidentDisplay() {
 
     const searchText =
         searchInput.value
@@ -288,11 +288,11 @@ function updateIncidentDisplay() {
 
 
     /*
-        Start with a copy of the incident array.
+        Start with a copy of the Accident array.
     */
 
-    let filteredIncidents =
-        [...incidents];
+    let filteredAccidents =
+        [...Accident];
 
 
     /* ---------------------------------------------
@@ -301,17 +301,17 @@ function updateIncidentDisplay() {
 
     if (searchText !== "") {
 
-        filteredIncidents =
-            filteredIncidents.filter(function (incident) {
+        filteredAccidents =
+            filteredAccidents.filter(function (Accident) {
 
                 const title =
-                    incident.title.toLowerCase();
+                    Accident.title.toLowerCase();
 
                 const location =
-                    incident.location.toLowerCase();
+                    Accident.location.toLowerCase();
 
                 const severity =
-                    incident.severity.toLowerCase();
+                    Accident.severity.toLowerCase();
 
                 return (
                     title.includes(searchText) ||
@@ -330,11 +330,11 @@ function updateIncidentDisplay() {
 
     if (selectedSeverity !== "all") {
 
-        filteredIncidents =
-            filteredIncidents.filter(function (incident) {
+        filteredAccidents =
+            filteredAccidents.filter(function (Accident) {
 
                 return (
-                    incident.severity ===
+                    Accident.severity ===
                     selectedSeverity
                 );
 
@@ -349,11 +349,11 @@ function updateIncidentDisplay() {
 
     if (selectedStatus !== "all") {
 
-        filteredIncidents =
-            filteredIncidents.filter(function (incident) {
+        filteredAccidents =
+            filteredAccidents.filter(function (Accident) {
 
                 return (
-                    incident.status ===
+                    Accident.status ===
                     selectedStatus
                 );
 
@@ -378,7 +378,7 @@ function updateIncidentDisplay() {
 
     if (selectedSort === "critical-high") {
 
-        filteredIncidents.sort(function (a, b) {
+        filteredAccidents.sort(function (a, b) {
 
             return (
                 severityOrder[a.severity] -
@@ -392,7 +392,7 @@ function updateIncidentDisplay() {
 
     if (selectedSort === "low-critical") {
 
-        filteredIncidents.sort(function (a, b) {
+        filteredAccidents.sort(function (a, b) {
 
             return (
                 severityOrder[b.severity] -
@@ -404,7 +404,7 @@ function updateIncidentDisplay() {
     }
 
 
-    displayIncidents(filteredIncidents);
+    displayAccidents(filteredAccidents);
 
 }
 
@@ -415,23 +415,23 @@ function updateIncidentDisplay() {
 
 function updateDashboard() {
 
-    /* Total incidents */
+    /* Total Accident */
 
-    incidentCount.textContent =
-        incidents.length;
+    accidentCount.textContent =
+        Accident.length;
 
 
-    /* Critical incidents */
+    /* Critical Accident */
 
-    const criticalIncidents =
-        incidents.filter(function (incident) {
+    const criticalAccidents =
+        Accident.filter(function (Accident) {
 
-            return incident.severity === "critical";
+            return Accident.severity === "critical";
 
         });
 
     criticalCount.textContent =
-        criticalIncidents.length;
+        criticalAccidents.length;
 
 
     /* Response teams */
@@ -440,26 +440,26 @@ function updateDashboard() {
         3;
 
 
-    /* Resolved incidents */
+    /* Resolved Accident */
 
-    const resolvedIncidents =
-        incidents.filter(function (incident) {
+    const resolvedAccidents =
+        Accident.filter(function (Accident) {
 
-            return incident.status === "Resolved";
+            return Accident.status === "Resolved";
 
         });
 
     resolvedCount.textContent =
-        resolvedIncidents.length;
+        resolvedAccidents.length;
 
 }
 
 
 /* =====================================================
-   ADD INCIDENT
+   ADD Accident
 ===================================================== */
 
-incidentForm.addEventListener(
+accidentForm.addEventListener(
     "submit",
     function (event) {
 
@@ -467,24 +467,24 @@ incidentForm.addEventListener(
 
 
         const title =
-            document.getElementById("incidentTitle")
+            document.getElementById("accidentTitle")
                 .value
                 .trim();
 
 
         const location =
-            document.getElementById("incidentLocation")
+            document.getElementById("accidentLocation")
                 .value
                 .trim();
 
 
         const severity =
-            document.getElementById("incidentSeverity")
+            document.getElementById("accidentSeverity")
                 .value;
 
 
         const status =
-            document.getElementById("incidentStatus")
+            document.getElementById("accidentStatus")
                 .value;
 
 
@@ -507,18 +507,18 @@ incidentForm.addEventListener(
         /* Generate unique ID */
 
         const newId =
-            incidents.length > 0
+            Accident.length > 0
                 ? Math.max(
-                    ...incidents.map(
-                        incident => incident.id
+                    ...Accident.map(
+                        Accident => Accident.id
                     )
                 ) + 1
                 : 1;
 
 
-        /* Create incident */
+        /* Create Accident */
 
-        const newIncident = {
+        const newAccident = {
 
             id: newId,
 
@@ -535,12 +535,12 @@ incidentForm.addEventListener(
 
         /* Add to array */
 
-        incidents.push(newIncident);
+        Accident.push(newAccident);
 
 
         /* Update dashboard */
 
-        updateIncidentDisplay();
+        updateAccidentDisplay();
 
         updateDashboard();
 
@@ -552,13 +552,13 @@ incidentForm.addEventListener(
 
         /* Reset form */
 
-        incidentForm.reset();
+        accidentForm.reset();
 
 
         /* Show confirmation */
 
         showToast(
-            "Incident reported successfully.",
+            "Accident reported successfully.",
             "✓"
         );
 
@@ -567,28 +567,28 @@ incidentForm.addEventListener(
 
 
 /* =====================================================
-   EDIT INCIDENT
+   EDIT Accident
 ===================================================== */
 
-function editIncident(id) {
+function editAccident(id) {
 
-    const incident =
-        incidents.find(function (item) {
+    const Accident =
+        Accident.find(function (item) {
 
             return item.id === id;
 
         });
 
 
-    if (!incident) {
+    if (!Accident) {
         return;
     }
 
 
     const newTitle =
         prompt(
-            "Enter incident title:",
-            incident.title
+            "Enter Accident title:",
+            Accident.title
         );
 
 
@@ -602,8 +602,8 @@ function editIncident(id) {
 
     const newLocation =
         prompt(
-            "Enter incident location:",
-            incident.location
+            "Enter Accident location:",
+            Accident.location
         );
 
 
@@ -618,7 +618,7 @@ function editIncident(id) {
     const newSeverity =
         prompt(
             "Enter severity: critical, high, medium or low",
-            incident.severity
+            Accident.severity
         );
 
 
@@ -657,7 +657,7 @@ function editIncident(id) {
     const newStatus =
         prompt(
             "Enter status: Active or Resolved",
-            incident.status
+            Accident.status
         );
 
 
@@ -676,28 +676,28 @@ function editIncident(id) {
 
     /* Update object */
 
-    incident.title =
+    Accident.title =
         newTitle.trim();
 
-    incident.location =
+    Accident.location =
         newLocation.trim();
 
-    incident.severity =
+    Accident.severity =
         severity;
 
-    incident.status =
+    Accident.status =
         status;
 
 
     /* Refresh UI */
 
-    updateIncidentDisplay();
+    updateAccidentDisplay();
 
     updateDashboard();
 
 
     showToast(
-        "Incident updated successfully.",
+        "Accident updated successfully.",
         "✓"
     );
 
@@ -705,15 +705,15 @@ function editIncident(id) {
 
 
 /* =====================================================
-   DELETE INCIDENT
+   DELETE Accident
 ===================================================== */
 
-function deleteIncident(id) {
+function deleteAccident(id) {
 
     const index =
-        incidents.findIndex(function (incident) {
+        Accident.findIndex(function (Accident) {
 
-            return incident.id === id;
+            return Accident.id === id;
 
         });
 
@@ -723,13 +723,13 @@ function deleteIncident(id) {
     }
 
 
-    const incident =
-        incidents[index];
+    const Accident =
+        Accident[index];
 
 
     const confirmed =
         confirm(
-            `Delete "${incident.title}"?`
+            `Delete "${Accident.title}"?`
         );
 
 
@@ -738,19 +738,19 @@ function deleteIncident(id) {
     }
 
 
-    incidents.splice(
+    Accident.splice(
         index,
         1
     );
 
 
-    updateIncidentDisplay();
+    updateAccidentDisplay();
 
     updateDashboard();
 
 
     showToast(
-        "Incident deleted.",
+        "Accident deleted.",
         "✓"
     );
 
@@ -763,7 +763,7 @@ function deleteIncident(id) {
 
 searchInput.addEventListener(
     "input",
-    updateIncidentDisplay
+    updateAccidentDisplay
 );
 
 
@@ -773,7 +773,7 @@ searchInput.addEventListener(
 
 filterSeverity.addEventListener(
     "change",
-    updateIncidentDisplay
+    updateAccidentDisplay
 );
 
 
@@ -783,7 +783,7 @@ filterSeverity.addEventListener(
 
 filterStatus.addEventListener(
     "change",
-    updateIncidentDisplay
+    updateAccidentDisplay
 );
 
 
@@ -793,7 +793,7 @@ filterStatus.addEventListener(
 
 sortSeverity.addEventListener(
     "change",
-    updateIncidentDisplay
+    updateAccidentDisplay
 );
 
 
@@ -807,7 +807,7 @@ clearSearch.addEventListener(
 
         searchInput.value = "";
 
-        updateIncidentDisplay();
+        updateAccidentDisplay();
 
         searchInput.focus();
 
@@ -819,7 +819,7 @@ clearSearch.addEventListener(
    OPEN MODAL
 ===================================================== */
 
-openIncidentForm.addEventListener(
+openAccidentForm.addEventListener(
     "click",
     openModal
 );
@@ -829,13 +829,13 @@ openIncidentForm.addEventListener(
    CLOSE MODAL
 ===================================================== */
 
-closeIncidentForm.addEventListener(
+closeAccidentForm.addEventListener(
     "click",
     closeModal
 );
 
 
-cancelIncident.addEventListener(
+cancelAccident.addEventListener(
     "click",
     closeModal
 );
@@ -845,12 +845,12 @@ cancelIncident.addEventListener(
    CLICK OUTSIDE MODAL
 ===================================================== */
 
-incidentModal.addEventListener(
+accidentModal.addEventListener(
     "click",
     function (event) {
 
         if (
-            event.target === incidentModal
+            event.target === accidentModal
         ) {
 
             closeModal();
@@ -871,7 +871,7 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
-            incidentModal.classList.contains("active")
+            accidentModal.classList.contains("active")
         ) {
 
             closeModal();
@@ -888,7 +888,7 @@ document.addEventListener(
 
 function openModal() {
 
-    incidentModal.classList.add(
+    accidentModal.classList.add(
         "active"
     );
 
@@ -900,7 +900,7 @@ function openModal() {
 
 function closeModal() {
 
-    incidentModal.classList.remove(
+    accidentModal.classList.remove(
         "active"
     );
 
@@ -1026,6 +1026,6 @@ function escapeHTML(value) {
    INITIAL LOAD
 ===================================================== */
 
-updateIncidentDisplay();
+updateAccidentDisplay();
 
 updateDashboard();

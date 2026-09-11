@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Emergency Response Dashboard - Project Documentation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 55px 65px;
+            border-radius: 14px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Cover Section */
+
+        .cover {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 35px;
+        }
+
+        .cover h1 {
+            font-size: 34px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .cover h2 {
+            font-size: 20px;
+            font-weight: normal;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #eef2ff;
+            color: #3730a3;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Sections */
+
+        section {
+            margin-bottom: 32px;
+        }
+
+        section h2 {
+            font-size: 22px;
+            color: #111827;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        section h3 {
+            font-size: 17px;
+            color: #374151;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        /* Technology Cards */
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .tech-card {
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 9px;
+        }
+
+        .tech-card strong {
+            display: block;
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        /* Feature Grid */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 13px 15px;
+            border-radius: 8px;
+        }
+
+        /* Repository Structure */
+
+        .code-block {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 9px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Links */
+
+        .links {
+            background: #f8fafc;
+            border-left: 5px solid #4f46e5;
+            padding: 20px;
+            border-radius: 7px;
+        }
+
+        .links p {
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            color: #3730a3;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Git Commands */
+
+        .command {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 13px 16px;
+            margin: 8px 0;
+            border-radius: 7px;
+            font-family: Consolas, monospace;
+        }
+
+        /* Submission */
+
+        .submission {
+            background: #111827;
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 10px;
+        }
+
+        .submission p {
+            text-align: left;
+        }
+
+        .submission strong {
+            color: #ffffff;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 94%;
+                padding: 30px 22px;
+                margin: 20px auto;
+            }
+
+            .cover {
+                padding: 40px 10px;
+            }
+
+            .cover h1 {
+                font-size: 27px;
+            }
+
+            .cover h2 {
+                font-size: 17px;
+            }
+
+            .tech-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 20px;
+            }
+
+            p {
+                text-align: left;
+            }
+        }
+
+        /* Print / PDF Styling */
+
+        @media print {
+
+            body {
+                background: #ffffff;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 30px;
+                box-shadow: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- COVER -->
+
+    <header class="cover">
+
+        <h1>Smart Emergency Response Dashboard</h1>
+
+        <h2>Final Project Documentation</h2>
+
+        <span class="badge">
+            Web Development Internship
+        </span>
+
+    </header>
+
+
+    <!-- PROJECT OBJECTIVE -->
+
+    <section>
+
+        <h2>1. Project Objective</h2>
+
+        <p>
+            The objective of this project is to develop a responsive and interactive
+            web-based dashboard for managing and monitoring reported accidents and
+            emergency response activities. The project demonstrates the practical
+            application of HTML, CSS, and JavaScript concepts learned during the
+            six-week web development internship. It also demonstrates the use of
+            Git and GitHub for version control and GitHub Pages for website deployment.
+        </p>
+
+    </section>
+
+
+    <!-- PROJECT OVERVIEW -->
+
+    <section>
+
+        <h2>2. Project Overview</h2>
+
+        <p>
+            Smart Emergency Response Dashboard is a web-based interface designed to
+            provide a centralized platform for managing accident-related information.
+            The dashboard displays important accident statistics and provides an
+            interface for adding, editing, searching, filtering, sorting, and
+            managing accident records.
+        </p>
+
+        <p>
+            The website has been designed with a responsive layout so that it can be
+            accessed on different screen sizes, including desktop, tablet, and
+            mobile devices.
+        </p>
+
+    </section>
+
+
+    <!-- TECHNOLOGIES -->
+
+    <section>
+
+        <h2>3. Technologies Used</h2>
+
+        <div class="tech-grid">
+
+            <div class="tech-card">
+
+                <strong>HTML5</strong>
+
+                Used to create the structure of the webpage and implement
+                semantic HTML elements.
+
+            </div>
+
+
+            <div class="tech-card">
+
+                <strong>CSS3</strong>
+
+                Used for styling, layout, Flexbox, Grid, responsive design,
+                media queries, and user interface presentation.
+
+            </div>
+
+
+            <div class="tech-card">
+
+                <strong>JavaScript</strong>
+
+                Used to implement interactive functionality, DOM manipulation,
+                event handling, form validation, searching, filtering,
+                sorting, and accident data management.
+
+            </div>
+
+
+            <div class="tech-card">
+
+                <strong>Git</strong>
+
+                Used for version control and tracking changes made during
+                project development.
+
+            </div>
+
+
+            <div class="tech-card">
+
+                <strong>GitHub</strong>
+
+                Used to store and manage the project repository and maintain
+                the project's commit history.
+
+            </div>
+
+
+            <div class="tech-card">
+
+                <strong>GitHub Pages</strong>
+
+                Used to deploy the completed website and make it publicly
+                accessible on the internet.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN FEATURES -->
+
+    <section>
+
+        <h2>4. Main Features</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                Accident Reporting
+            </div>
+
+            <div class="feature">
+                Add Accident Details
+            </div>
+
+            <div class="feature">
+                Edit Accident Information
+            </div>
+
+            <div class="feature">
+                Delete Accident Records
+            </div>
+
+            <div class="feature">
+                Search Accidents
+            </div>
+
+            <div class="feature">
+                Filter Accidents
+            </div>
+
+            <div class="feature">
+                Sort Accidents by Severity
+            </div>
+
+            <div class="feature">
+                Critical Accident Tracking
+            </div>
+
+            <div class="feature">
+                Resolved Accident Tracking
+            </div>
+
+            <div class="feature">
+                Dashboard Statistics
+            </div>
+
+            <div class="feature">
+                Form Validation
+            </div>
+
+            <div class="feature">
+                Local Data Persistence
+            </div>
+
+            <div class="feature">
+                Responsive User Interface
+            </div>
+
+            <div class="feature">
+                Dynamic DOM Updates
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+
+    <section>
+
+        <h2>5. JavaScript Functionality</h2>
+
+        <p>
+            JavaScript is used to make the dashboard interactive and dynamic.
+            The project uses JavaScript functions, arrays, objects, DOM
+            manipulation, event handling, form validation, searching,
+            filtering, sorting, and dynamic content generation.
+        </p>
+
+        <p>
+            Users can add new accident records, edit existing information,
+            search for specific accidents, filter records, sort accident
+            information, and delete records through the dashboard interface.
+        </p>
+
+        <p>
+            Local storage is also used to preserve accident records in the
+            browser. This allows stored accident information to remain
+            available even after the webpage is refreshed.
+        </p>
+
+    </section>
+
+
+    <!-- RESPONSIVE DESIGN -->
+
+    <section>
+
+        <h2>6. Responsive Design</h2>
+
+        <p>
+            The website uses CSS responsive techniques including Flexbox,
+            Grid, media queries, flexible sizing, and responsive layouts.
+            The interface has been designed so that dashboard cards, forms,
+            controls, accident records, and other content remain usable on
+            different screen sizes.
+        </p>
+
+        <p>
+            The final website was tested on desktop, tablet, and mobile
+            screen sizes to ensure a consistent and user-friendly experience.
+        </p>
+
+    </section>
+
+
+    <!-- GIT AND GITHUB -->
+
+    <section>
+
+        <h2>7. Git &amp; GitHub</h2>
+
+        <p>
+            Git was used throughout the development process to track project
+            changes and maintain version history. Meaningful commit messages
+            were used to describe important changes made during development.
+        </p>
+
+        <p>
+            The final project was pushed to a publicly accessible GitHub
+            repository containing the HTML, CSS, JavaScript, README, and
+            required project files.
+        </p>
+
+
+        <h3>Git Commands Used</h3>
+
+        <div class="command">
+            git init
+        </div>
+
+        <div class="command">
+            git status
+        </div>
+
+        <div class="command">
+            git add
+        </div>
+
+        <div class="command">
+            git commit
+        </div>
+
+        <div class="command">
+            git log
+        </div>
+
+        <div class="command">
+            git push
+        </div>
+
+
+        <h3>Repository Structure</h3>
+
+        <div class="code-block">
+Smart-Emergency-Response-Dashboard/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+        </div>
+
+    </section>
+
+
+    <!-- GITHUB LINKS -->
+
+    <section>
+
+        <h2>8. GitHub Repository &amp; Live Website</h2>
+
+        <div class="links">
+
+            <p>
+
+                <strong>GitHub Repository:</strong><br>
+
+                <a
+                    href="https://github.com/PRAGYA0102-tech/Smart---Emergency--Response---Dashboard.git"
+                    target="_blank"
+                >
+                    https://github.com/PRAGYA0102-tech/Smart---Emergency---Response---Dashboard
+                </a>
+
+            </p>
+
+
+            <p>
+
+                <strong>Live Website:</strong><br>
+
+                <a
+                    href="https://pragya0102-tech.github.io/Smart---Emergency--Response---Dashboard/"
+                    target="_blank"
+                >
+                    https://pragya0102-tech.github.io/Smart---Emergency---Response---Dashboard/
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CHALLENGES -->
+
+    <section>
+
+        <h2>9. Challenges Faced</h2>
+
+        <p>
+            One of the main challenges was implementing multiple interactive
+            features while keeping the interface simple and user-friendly.
+            Managing accident data and ensuring that changes were correctly
+            reflected in the dashboard also required careful JavaScript
+            implementation.
+        </p>
+
+        <p>
+            Another challenge was deploying the completed project through
+            GitHub Pages and ensuring that the required files, links, and
+            JavaScript functionality worked correctly after deployment.
+        </p>
+
+    </section>
+
+
+    <!-- SOLUTIONS -->
+
+    <section>
+
+        <h2>10. Solutions Implemented</h2>
+
+        <p>
+            The project was developed by separating the structure, styling,
+            and functionality into HTML, CSS, and JavaScript files.
+            JavaScript functions and DOM manipulation were used to manage
+            user interactions and update the dashboard dynamically.
+        </p>
+
+        <p>
+            Git was used throughout development to maintain meaningful
+            commits and track changes. GitHub Pages was configured to deploy
+            the final project from the main branch.
+        </p>
+
+    </section>
+
+
+    <!-- KEY LEARNINGS -->
+
+    <section>
+
+        <h2>11. Key Learnings</h2>
+
+        <p>
+            Through this project, I learned how to combine HTML, CSS, and
+            JavaScript to create a complete responsive and interactive
+            website. I gained practical experience with semantic HTML,
+            CSS layouts, Flexbox, Grid, media queries, JavaScript events,
+            DOM manipulation, form handling, arrays, objects, data
+            management, and responsive design.
+        </p>
+
+        <p>
+            I also learned how to use Git commands, maintain a GitHub
+            repository, create meaningful commits, push project changes,
+            and deploy a website using GitHub Pages.
+        </p>
+
+    </section>
+
+
+    <!-- FUTURE IMPROVEMENTS -->
+
+    <section>
+
+        <h2>12. Future Improvements</h2>
+
+        <p>
+            Future versions of the project can include a backend database,
+            user authentication, real-time emergency notifications,
+            map-based accident locations, advanced analytics, and
+            integration with emergency response services.
+        </p>
+
+    </section>
+
+
+    <!-- SUBMISSION -->
+
+    <section>
+
+        <h2>13. Submission Details</h2>
+
+        <div class="submission">
+
+            <p>
+                <strong>Selected Submission Option:</strong><br>
+                GitHub Repository Link
+            </p>
+
+            <p>
+                <strong>Repository:</strong><br>
+                https://github.com/PRAGYA0102-tech/Smart---Emergency--Response---Dashboard/
+            </p>
+
+            <p>
+                <strong>Live Website:</strong><br>
+                https://pragya0102-tech.github.io/Smart---Emergency--Response---Dashboard/
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        Smart Emergency Response Dashboard
+        <br>
+        Final Web Development Internship Project
+
+    </footer>
+
+</div>
+
+</body>
+</html>
